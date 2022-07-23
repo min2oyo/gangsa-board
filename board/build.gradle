@@ -19,6 +19,10 @@ repositories {
 	mavenCentral()
 }
 
+// Cannot load driver class: oracle.jdbc.OracleDriver
+// ojdbc6.jar add build path하지 않은 에러
+
+// Gradle 파일을 수정하면 반드시 저장 후 Refresh Gradle Project로 반영
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
@@ -26,6 +30,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 }
 
 tasks.named('test') {
