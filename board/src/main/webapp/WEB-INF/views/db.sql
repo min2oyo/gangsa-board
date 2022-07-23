@@ -17,6 +17,7 @@ insert into board (board_idx, board_name, board_title, board_content, board_date
 insert into board (board_idx, board_name, board_title, board_content, board_date) values (board_seq.nextval, '사루이', '글 제목3', '글 내용3', sysdate);
 
 select * from board;
+select * from board order by board_date desc;
 
 -- 댓글
 drop sequence reply_board_seq;  -- seq
