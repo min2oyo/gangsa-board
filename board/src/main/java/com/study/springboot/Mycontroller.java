@@ -35,7 +35,7 @@ public class Mycontroller {
 		List<BoardDTO> list = boardDAO.list();
 		model.addAttribute("list", list);
 
-		System.out.println(list);
+		System.out.println(boardDAO.list());
 
 		return "listForm"; // "listForm.jsp" 디스패치 해줌
 

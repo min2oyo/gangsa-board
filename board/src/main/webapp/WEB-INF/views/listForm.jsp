@@ -1,23 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>게시판 목록보기</title>
-	<style>
-		* {
-			margin: 0 auto;
-			padding: 0 auto;
-			overflow: hidden;
-		}
-		h2, td {
-			text-align: center;
-		}
-	</style>
+<meta charset="UTF-8">
+<title>게시판 목록보기</title>
+<style>
+* {
+	margin: 0 auto;
+	padding: 0 auto;
+	overflow: hidden;
+}
+
+h2, td {
+	text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -31,18 +34,27 @@
 			<th>날짜</th>
 			<th>조회수</th>
 		</tr>
-		
+
 		<c:forEach var="dto" items="${list}">
 			<tr>
 				<td>${dto}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 <%-- 				<td>${dto.board_idx}</td> --%>
 <%-- 				<td>${dto.board_name}</td> --%>
-<%-- 				<td>${dto.board_title}</td> --%>
-<%-- 				<td>${dto.board_date}</td> --%>
+<!--  				<td> -->
+<%-- 					<a href="contentForm?board_idx=${dto.board_idx}">${dto.board_title}</a> --%>
+<!-- 				</td> -->
+<!-- 				<td> -->
+<%-- 					<c:set var="dateVar" value="${dto.board_date}" /> --%>
+<%-- 					<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd HH:mm:ss" /> --%>
+<!-- 				</td> -->
 <%-- 				<td>${dto.board_hit}</td> --%>
 			</tr>
 		</c:forEach>
-		
+
 		<tr>
 			<td colspan="5"><a href="writeForm">글 작성</a></td>
 		</tr>
