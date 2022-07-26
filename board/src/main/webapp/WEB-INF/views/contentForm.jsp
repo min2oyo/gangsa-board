@@ -46,6 +46,41 @@
 
 		</table>
 	</form>
+	
+	<br>
+	
+	<form action="writeReply" method="post">
+		<table width="500" cellpadding="0" cellspacing="0" border="1">
+			<tr>
+				<td colspan="2">
+					<label>댓글</label><textarea rows="2" cols="50" name="reply_content"></textarea><br>
+					<label>별명</label><input type="text" name="reply_name" value=""><br>
+					<input type="submit" value="댓글달기" />
+				</td>
+			</tr>
+		</table>
+	</form>
+	
+	
+	<br>
+	
+	<table width="500" cellpadding="0" cellspacing="0" border="1">
+		<tr>
+			<th>별명</th>
+			<th>내용</th>
+			<th>날짜</th>
+			<th>삭제</th>
+		</tr>
+		<forEach var="reply_dto" items="${reply_list}">
+			<tr>
+				<th>${reply_dto.reply_name}</th>
+				<th>${reply_dto.reply_content}</th>
+				<th>${reply_dto.reply_date}</th>
+				<th><a href="deleteReplyAction?reply_idx=${reply.dto.reply_idx}"><button>삭제</button></a></th>
+			</tr>
+		<forEach>
+	</table>
+	
 </body>
 
 </html>
