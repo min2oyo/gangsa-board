@@ -74,7 +74,6 @@ public class Mycontroller {
 //            return "redirect:listForm";
 		} else {
 			System.out.println("글쓰기 실패!");
-			request.getSession().setAttribute("alert_message", "글쓰기 실패!");
 			return "<script>alert('글쓰기 실패!'); location.href='/writeForm'</script>";
 //            request.getSession().setAttribute("alert_message", "글쓰기 실패!");
 //            return "redirect:writeForm";
@@ -139,6 +138,40 @@ public class Mycontroller {
 			return "<script>alert('글삭제 실패!'); location.href='/contentForm?board_idx=" + board_idx + "';</script>";
 //			request.getSession().setAttribute("alert_message", "글삭제 성공!");
 //			return "redirect:contentForm?board_idx=" + board_idx;
+		}
+
+	}
+
+	// 댓글 전송
+	@RequestMapping("/writeReplyAction")
+	@ResponseBody
+	public String writeReplyAction(@RequestParam("reply_content") String reply_content, @RequestParam("reply_name") String reply_name, @RequestParam("reply_board_index") String reply_board_index, HttpServletRequest request) {
+
+		int result = replyDAO.reply_write(reply_content, reply_name, reply_board_index);
+
+		if (result == 1) {
+			System.out.println("댓글달기 성공!");
+			return "<script>alert('댓글달기 성공!'); location.href='/contentForm?board_idx=" + reply_board_index + "';</script>";
+		} else {
+			System.out.println("댓글달기 실패!");
+			return "<script>alert('댓글달기 실패!'); location.href='/contentForm?board_idx=" + reply_board_index + "';</script>";
+		}
+
+	}
+
+	// 댓글 삭제
+	@RequestMapping("/deleteReplyAction")
+	@ResponseBody
+	public String deleteReplyAction(@RequestParam("reply_idx") String reply_idx, @RequestParam("board_idx") String board_idx, HttpServletRequest request) {
+
+		int result = replyDAO.reply_deleteDTO(reply_idx);
+
+		if (result == 1) {
+			System.out.println("댓글삭제 성공!");
+			return "<script>alert('댓글삭제 성공!'); location.href='/contentForm?board_idx=" + board_idx + "';</script>";
+		} else {
+			System.out.println("댓글삭제 실패!");
+			return "<script>alert('댓글삭제 실패!'); location.href='/contentForm?board_idx=" + board_idx + "';</script>";
 		}
 
 	}

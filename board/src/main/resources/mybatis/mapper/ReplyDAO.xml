@@ -14,7 +14,7 @@
 	<!-- 댓글 쓰기 -->
 	<insert id="reply_write">
 		insert into reply (reply_idx, reply_name, reply_content, reply_date, reply_board_idx)
-		values (reply_seq.nextval, #{param1}, #{param2}, sysdate, #{param3})
+		values (reply_board_seq.nextval, #{param1}, #{param2}, sysdate, #{param3})
 	</insert>
 	
 	<!-- 댓글 삭제 -->

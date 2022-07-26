@@ -13,7 +13,7 @@ public interface IReplyDAO {
 	public List<ReplyDTO> reply_list(String reply_board_index);
 
 	// 댓글 전송
-	public int reply_write(String reply_name, String reply_content, String reply_board_index);
+	public int reply_write(String reply_content, String reply_name, String reply_board_index);
 
 	// 댓글 삭제
 	public int reply_deleteDTO(String reply_idx);

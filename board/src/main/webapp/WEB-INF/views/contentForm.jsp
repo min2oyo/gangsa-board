@@ -50,10 +50,11 @@
 	
 	<br>
 	
-	<form action="writeReply" method="post">
+	<form action="writeReplyAction" method="post">
 		<table width="500" cellpadding="0" cellspacing="0" border="1">
 			<tr>
 				<td colspan="2">
+					<input type="hidden" name="reply_board_index" value="${dto.board_idx}" />
 					<label>댓글</label><textarea rows="2" cols="50" name="reply_content"></textarea><br>
 					<label>별명</label><input type="text" name="reply_name" value=""><br>
 					<input type="submit" value="댓글달기" />
@@ -80,7 +81,7 @@
 					<c:set var="dateVar" value="${reply_dto.reply_date}" />
 					<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd HH:mm:ss" />
 				</td>
-				<th><a href="deleteReplyAction?reply_idx=${reply.dto.reply_idx}"><button>삭제</button></a></th>
+				<th><a href="deleteReplyAction?reply_idx=${reply.dto.reply_idx}&board_idx=${dto.board_idx}"><button>삭제</button></a></th>
 			</tr>
 		</c:forEach>
 	</table>
