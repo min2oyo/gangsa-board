@@ -27,6 +27,11 @@
 	<update id="updateDTO">
 		update board set board_name=#{param2}, board_title=#{param3}, board_content=#{param4} where board_idx=#{param1}
 	</update>
+	
+	<!-- 글삭제 -->
+	<delete id="deleteDTO">
+		delete from board where board_idx=#{param1}
+	</delete>
 
 
 </mapper>

@@ -98,7 +98,25 @@ public class Mycontroller {
 		} else {
 			System.out.println("글수정 실패!");
 			request.getSession().setAttribute("alert_message", "글수정 성공!");
-			return "redirect:updateForm?board_idx=" + board_idx;
+			return "redirect:contentForm?board_idx=" + board_idx;
+		}
+
+	}
+
+	// 글삭제
+	@RequestMapping("/deleteAction")
+	public String deleteAction(@RequestParam("board_idx") String board_idx, HttpServletRequest request) {
+
+		int result = boardDAO.deleteDTO(board_idx);
+
+		if (result == 1) {
+			System.out.println("글삭제 성공!");
+			request.getSession().setAttribute("alert_message", "글삭제 성공!");
+			return "redirect:listForm";
+		} else {
+			System.out.println("글삭제 실패!");
+			request.getSession().setAttribute("alert_message", "글삭제 성공!");
+			return "redirect:contentForm?board_idx=" + board_idx;
 		}
 
 	}

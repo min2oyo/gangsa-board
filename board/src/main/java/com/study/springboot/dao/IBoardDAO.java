@@ -21,4 +21,7 @@ public interface IBoardDAO {
 	// 글수정 이동
 	public int updateDTO(String board_idx, String board_name, String board_title, String board_content);
 
+	// 글삭제
+	public int deleteDTO(String board_idx);
+
 }
