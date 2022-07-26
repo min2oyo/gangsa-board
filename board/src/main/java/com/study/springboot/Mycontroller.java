@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.springboot.dao.IBoardDAO;
 import com.study.springboot.dto.BoardDTO;
@@ -57,18 +58,22 @@ public class Mycontroller {
 
 	// 글쓰기 전송
 	@RequestMapping("/writeAction")
+	@ResponseBody
 	public String writeAction(@RequestParam("board_name") String board_name, @RequestParam("board_title") String board_title, @RequestParam("board_content") String board_content, HttpServletRequest request) {
 
 		int result = boardDAO.write(board_name, board_title, board_content);
 
 		if (result == 1) {
 			System.out.println("글쓰기 성공!");
-			request.getSession().setAttribute("alert_message", "글쓰기 성공!");
-			return "redirect:listForm";
+			return "<script>alert('글쓰기 성공!'); location.href='/listForm'</script>";
+//            request.getSession().setAttribute("alert_message", "글쓰기 성공!");
+//            return "redirect:listForm";
 		} else {
 			System.out.println("글쓰기 실패!");
 			request.getSession().setAttribute("alert_message", "글쓰기 실패!");
-			return "redirect:writeForm";
+			return "<script>alert('글쓰기 실패!'); location.href='/writeForm'</script>";
+//            request.getSession().setAttribute("alert_message", "글쓰기 실패!");
+//            return "redirect:writeForm";
 		}
 
 	}
@@ -87,36 +92,42 @@ public class Mycontroller {
 
 	// 글수정 이동
 	@RequestMapping("/updateAction")
+	@ResponseBody
 	public String updateAction(@RequestParam("board_idx") String board_idx, @RequestParam("board_name") String board_name, @RequestParam("board_title") String board_title, @RequestParam("board_content") String board_content, HttpServletRequest request) {
 
 		int result = boardDAO.updateDTO(board_idx, board_name, board_title, board_content);
 
 		if (result == 1) {
 			System.out.println("글수정 성공!");
-			request.getSession().setAttribute("alert_message", "글수정 성공!");
-			return "redirect:listForm";
+			return "<script>alert('글수정 성공!'); location.href='/listForm';</script>";
+//			request.getSession().setAttribute("alert_message", "글수정 성공!");
+//			return "redirect:listForm";
 		} else {
 			System.out.println("글수정 실패!");
-			request.getSession().setAttribute("alert_message", "글수정 성공!");
-			return "redirect:contentForm?board_idx=" + board_idx;
+			return "<script>alert('글수정 실패!'); location.href='/contentForm?board_idx=" + board_idx + "';</script>";
+//			request.getSession().setAttribute("alert_message", "글수정 실패!");
+//			return "redirect:contentForm?board_idx=" + board_idx;
 		}
 
 	}
 
 	// 글삭제
 	@RequestMapping("/deleteAction")
+	@ResponseBody
 	public String deleteAction(@RequestParam("board_idx") String board_idx, HttpServletRequest request) {
 
 		int result = boardDAO.deleteDTO(board_idx);
 
 		if (result == 1) {
 			System.out.println("글삭제 성공!");
-			request.getSession().setAttribute("alert_message", "글삭제 성공!");
-			return "redirect:listForm";
+			return "<script>alert('글삭제 성공!'); location.href='/listForm';</script>";
+//			request.getSession().setAttribute("alert_message", "글삭제 성공!");
+//			return "redirect:listForm";
 		} else {
 			System.out.println("글삭제 실패!");
-			request.getSession().setAttribute("alert_message", "글삭제 성공!");
-			return "redirect:contentForm?board_idx=" + board_idx;
+			return "<script>alert('글삭제 실패!'); location.href='/contentForm?board_idx=" + board_idx + "';</script>";
+//			request.getSession().setAttribute("alert_message", "글삭제 성공!");
+//			return "redirect:contentForm?board_idx=" + board_idx;
 		}
 
 	}
