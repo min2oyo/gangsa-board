@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -71,14 +72,17 @@
 			<th>날짜</th>
 			<th>삭제</th>
 		</tr>
-		<forEach var="reply_dto" items="${reply_list}">
+		<c:forEach var="reply_dto" items="${reply_list}">
 			<tr>
-				<th>${reply_dto.reply_name}</th>
-				<th>${reply_dto.reply_content}</th>
-				<th>${reply_dto.reply_date}</th>
+				<td>${reply_dto.reply_name}</td>
+				<td>${reply_dto.reply_content}</td>
+				<td>
+					<c:set var="dateVar" value="${reply_dto.reply_date}" />
+					<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd HH:mm:ss" />
+				</td>
 				<th><a href="deleteReplyAction?reply_idx=${reply.dto.reply_idx}"><button>삭제</button></a></th>
 			</tr>
-		<forEach>
+		</c:forEach>
 	</table>
 	
 </body>

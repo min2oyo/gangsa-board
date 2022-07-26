@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.springboot.dao.IBoardDAO;
+import com.study.springboot.dao.IReplyDAO;
 import com.study.springboot.dto.BoardDTO;
+import com.study.springboot.dto.ReplyDTO;
 
 @Controller
 public class Mycontroller {
 
 	@Autowired	// 자동으로 빈을 생성
 	IBoardDAO boardDAO;
+	@Autowired	// 자동으로 빈을 생성
+	IReplyDAO replyDAO;
 
 	// 메인
 	@RequestMapping("/")
@@ -85,8 +89,13 @@ public class Mycontroller {
 		// 조회수 증가
 		boardDAO.hit(board_idx);
 
+		// 게시글 보기
 		BoardDTO dto = boardDAO.viewDTO(board_idx);
 		model.addAttribute("dto", dto);
+
+		// 댓글 리스트 가져오기
+		List<ReplyDTO> reply_list = replyDAO.reply_list(board_idx);
+		model.addAttribute("reply_list", reply_list);
 
 		return "contentForm";
 
