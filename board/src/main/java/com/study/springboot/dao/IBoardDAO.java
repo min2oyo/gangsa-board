@@ -13,4 +13,6 @@ public interface IBoardDAO {
 
 	public int write(String board_name, String board_title, String board_content);
 
+	public BoardDTO viewDTO(String board_idx);
+
 }

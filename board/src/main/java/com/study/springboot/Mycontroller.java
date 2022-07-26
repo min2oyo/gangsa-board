@@ -17,19 +17,22 @@ public class Mycontroller {
 	@Autowired	// 자동으로 빈을 생성
 	IBoardDAO boardDAO;
 
+	// 메인
 	@RequestMapping("/")
 	public String root() {
 
-		return "redirect:listForm"; // listForm으로 리다이렉트 됨
+		return "redirect:listForm";
 
 	}
 
+	// 메인 test
 //	@RequestMapping("/")
 //	@ResponseBody // 문자열 호출
 //	public String root() {
 //		return "root() 호출";
 //	}
 
+	// 전체 목록
 	@RequestMapping("/listForm")
 	public String listForm(Model model) {
 
@@ -38,17 +41,19 @@ public class Mycontroller {
 
 		System.out.println(boardDAO.list());
 
-		return "listForm"; // "listForm.jsp" 디스패치 해 줌
+		return "listForm";
 
 	}
 
+	// 글쓰기 이동
 	@RequestMapping("/writeForm")
 	public String writeForm() {
 
-		return "writeForm";	// "writeForm.jsp" 디스매치 해 줌
+		return "writeForm";
 
 	}
 
+	// 글쓰기 전송
 	@RequestMapping("/writeAction")
 	public String writeAction(@RequestParam("board_name") String board_name, @RequestParam("board_title") String board_title, @RequestParam("board_content") String board_content) {
 
@@ -56,11 +61,23 @@ public class Mycontroller {
 
 		if (result == 1) {
 			System.out.println("글쓰기 성공!");
+			return "redirect:listForm";
 		} else {
 			System.out.println("글쓰기 실패!");
+			return "redirect:writeForm";
 		}
 
-		return "redirect:listForm"; // listForm으로 리다이렉트 됨
+	}
+
+	// 글보기 이동
+	@RequestMapping("/contentFrom")
+	public String contentForm(@RequestParam("board_idx") String board_idx, Model model) {
+
+		BoardDTO dto = boardDAO.viewDTO(board_idx);
+		System.out.println("dto: " + dto);
+		model.addAttribute("dto", dto);
+
+		return "contentForm";
 
 	}
 

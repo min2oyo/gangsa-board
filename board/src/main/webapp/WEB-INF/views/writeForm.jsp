@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -28,8 +28,7 @@
 				<td><textarea rows="10" cols="50" name="board_content"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2">&nbsp;&nbsp;<input type="submit" value="글쓰기" />&nbsp;&nbsp;
-					<a href="listForm"><input type="button" value="목록보기"></a>
+				<td colspan="2">&nbsp;&nbsp;<input type="submit" value="글쓰기" />&nbsp;&nbsp; <a href="listForm"><input type="button" value="목록보기"></a>
 				</td>
 			</tr>
 

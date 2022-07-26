@@ -1,26 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
-
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>게시판 목록보기</title>
-<style>
-* {
-	margin: 0 auto;
-	padding: 0 auto;
-	overflow: hidden;
-}
-
-h2, td {
-	text-align: center;
-}
-</style>
+	<meta charset="UTF-8">
+	<title>게시판 목록보기</title>
+	<style>
+	* {
+		margin: 0 auto;
+		padding: 0 auto;
+		overflow: hidden;
+	}
+	
+	h2, td {
+		text-align: center;
+	}
+	</style>
 </head>
 
 <body>
@@ -61,4 +59,5 @@ h2, td {
 	</table>
 
 </body>
+
 </html>

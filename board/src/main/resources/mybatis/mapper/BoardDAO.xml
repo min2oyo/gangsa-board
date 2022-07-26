@@ -7,13 +7,21 @@
 <!-- SQL 끝에 ';' 넣지 않음 -->
 <mapper namespace="com.study.springboot.dao.IBoardDAO">
 
+	<!-- 전체 목록 -->
 	<select id="list" resultType="com.study.springboot.dto.BoardDTO">
 		select * from board order by board_date desc
 	</select>
 
+	<!-- 글쓰기 -->
 	<insert id="write">
 		insert into board (board_idx, board_name, board_title, board_content, board_date)
 		values (board_seq.nextval, #{param1}, #{param2}, #{param3}, sysdate)
 	</insert>
+
+	<!-- 글보기 -->
+	<select id="viewDTO" resultType="com.study.springboot.dto.BoardDTO">
+		select * from board where board_idx=#{param1}
+	</select>
+
 
 </mapper>
