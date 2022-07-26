@@ -16,7 +16,6 @@
 	<form action="updateAction" method="post">
 		<table width="500" cellpadding="0" cellspacing="0" border="1">
 <%-- 			<input type="hidden" name="board_idx" value="${dto.board_idx}" /> --%>
-<%-- 			<input type="hidden" name="board_name" value="${dto.board_name}" /> --%>
 			<tr>
 				<td>번호</td>
 <%-- 				<td>${dto.board_idx}</td> --%>

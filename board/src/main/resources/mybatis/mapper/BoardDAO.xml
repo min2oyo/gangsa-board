@@ -22,6 +22,11 @@
 	<select id="viewDTO" resultType="com.study.springboot.dto.BoardDTO">
 		select * from board where board_idx=#{param1}
 	</select>
+	
+	<!-- 글수정 -->
+	<update id="updateDTO">
+		update board set board_name=#{param2}, board_title=#{param3}, board_content=#{param4} where board_idx=#{param1}
+	</update>
 
 
 </mapper>

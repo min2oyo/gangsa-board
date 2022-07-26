@@ -2,6 +2,8 @@ package com.study.springboot;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,15 +57,17 @@ public class Mycontroller {
 
 	// 글쓰기 전송
 	@RequestMapping("/writeAction")
-	public String writeAction(@RequestParam("board_name") String board_name, @RequestParam("board_title") String board_title, @RequestParam("board_content") String board_content) {
+	public String writeAction(@RequestParam("board_name") String board_name, @RequestParam("board_title") String board_title, @RequestParam("board_content") String board_content, HttpServletRequest request) {
 
 		int result = boardDAO.write(board_name, board_title, board_content);
 
 		if (result == 1) {
 			System.out.println("글쓰기 성공!");
+			request.getSession().setAttribute("alert_message", "글쓰기 성공!");
 			return "redirect:listForm";
 		} else {
 			System.out.println("글쓰기 실패!");
+			request.getSession().setAttribute("alert_message", "글쓰기 실패!");
 			return "redirect:writeForm";
 		}
 
@@ -78,6 +82,24 @@ public class Mycontroller {
 		model.addAttribute("dto", dto);
 
 		return "contentForm";
+
+	}
+
+	// 글수정 이동
+	@RequestMapping("/updateAction")
+	public String updateAction(@RequestParam("board_idx") String board_idx, @RequestParam("board_name") String board_name, @RequestParam("board_title") String board_title, @RequestParam("board_content") String board_content, HttpServletRequest request) {
+
+		int result = boardDAO.updateDTO(board_idx, board_name, board_title, board_content);
+
+		if (result == 1) {
+			System.out.println("글수정 성공!");
+			request.getSession().setAttribute("alert_message", "글수정 성공!");
+			return "redirect:listForm";
+		} else {
+			System.out.println("글수정 실패!");
+			request.getSession().setAttribute("alert_message", "글수정 성공!");
+			return "redirect:updateForm?board_idx=" + board_idx;
+		}
 
 	}
 
