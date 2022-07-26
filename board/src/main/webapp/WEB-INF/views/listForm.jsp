@@ -58,6 +58,15 @@
 		</tr>
 	</table>
 
+	<script>
+		// 웹브라우저 back키 누를 때 페이지 재로딩
+		window.onpageshow = function(event) {
+			if (event.persisted) {
+				document.location.reload();
+			}
+		};
+	</script>
+	
 </body>
 
 </html>

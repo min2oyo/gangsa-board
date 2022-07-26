@@ -20,18 +20,23 @@
 
 	<!-- 글보기 -->
 	<select id="viewDTO" resultType="com.study.springboot.dto.BoardDTO">
-		select * from board where board_idx=#{param1}
+		select * from board where board_idx = #{param1}
 	</select>
 	
 	<!-- 글수정 -->
 	<update id="updateDTO">
-		update board set board_name=#{param2}, board_title=#{param3}, board_content=#{param4} where board_idx=#{param1}
+		update board set board_name = #{param2}, board_title = #{param3}, board_content = #{param4} where board_idx = #{param1}
 	</update>
 	
 	<!-- 글삭제 -->
 	<delete id="deleteDTO">
-		delete from board where board_idx=#{param1}
+		delete from board where board_idx = #{param1}
 	</delete>
+	
+	<!-- 조회수 증가 -->
+	<update id="hit">
+		update board set board_hit = board_hit + 1 where board_idx = #{param1}
+	</update>
 
 
 </mapper>

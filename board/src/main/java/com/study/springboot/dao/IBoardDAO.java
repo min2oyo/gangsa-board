@@ -24,4 +24,7 @@ public interface IBoardDAO {
 	// 글삭제
 	public int deleteDTO(String board_idx);
 
+	// 조회수 증가
+	public int hit(String Board_idx);
+
 }
