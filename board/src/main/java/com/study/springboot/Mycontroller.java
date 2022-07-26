@@ -37,7 +37,21 @@ public class Mycontroller {
 
 		System.out.println(boardDAO.list());
 
-		return "listForm"; // "listForm.jsp" 디스패치 해줌
+		return "listForm"; // "listForm.jsp" 디스패치 해 줌
+
+	}
+
+	@RequestMapping("/writeForm")
+	public String writeForm() {
+
+		return "writeForm";	// "writeForm.jsp" 디스매치 해 줌
+
+	}
+
+	@RequestMapping("/writeAction")
+	public String writeAction() {
+
+		return "writeForm";	// "writeForm.jsp" 디스매치 해 줌
 
 	}
 

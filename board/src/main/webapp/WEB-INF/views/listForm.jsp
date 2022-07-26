@@ -42,16 +42,16 @@ h2, td {
 				<td></td>
 				<td></td>
 				<td></td>
-<%-- 				<td>${dto.board_idx}</td> --%>
-<%-- 				<td>${dto.board_name}</td> --%>
-<!--  				<td> -->
-<%-- 					<a href="contentForm?board_idx=${dto.board_idx}">${dto.board_title}</a> --%>
-<!-- 				</td> -->
-<!-- 				<td> -->
-<%-- 					<c:set var="dateVar" value="${dto.board_date}" /> --%>
-<%-- 					<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd HH:mm:ss" /> --%>
-<!-- 				</td> -->
-<%-- 				<td>${dto.board_hit}</td> --%>
+				<%-- 				<td>${dto.board_idx}</td> --%>
+				<%-- 				<td>${dto.board_name}</td> --%>
+				<!--  				<td> -->
+				<%-- 					<a href="contentForm?board_idx=${dto.board_idx}">${dto.board_title}</a> --%>
+				<!-- 				</td> -->
+				<!-- 				<td> -->
+				<%-- 					<c:set var="dateVar" value="${dto.board_date}" /> --%>
+				<%-- 					<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd HH:mm:ss" /> --%>
+				<!-- 				</td> -->
+				<%-- 				<td>${dto.board_hit}</td> --%>
 			</tr>
 		</c:forEach>
 
